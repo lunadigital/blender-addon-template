@@ -1,5 +1,5 @@
 # Blender Add-on Template
-This is an empty template to help you organize your Blender Add-on code.
+This is an empty template to help you organize your Blender Add-on code. You can even install the template itself and enable it as an add-on! It doesn't do a whole heck of a lot, but it proves the code works. Enjoy!
 
 # What's the big deal?
 I use my free time to create cool things and release them - for free - on my website, [www.aaronpowell.me](http://www.aaronpowell.me). 3D models, animations, pictures, code snippets, publications, you name it (the code for the website is even open-sourced)!
