@@ -29,21 +29,20 @@ bl_info = {
         }
 
 import bpy
-# import props
-# import ui
-
-from . import properties
-from . import ui
 
 #
 # Add additional functions here
 #
 
 def register():
+    from . import properties
+    from . import ui
     properties.register()
     ui.register()
 
 def unregister():
+    from . import properties
+    from . import ui
     properties.unregister()
     ui.unregister()
 
