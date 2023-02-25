@@ -15,24 +15,43 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 import bpy
+import sys
 from bpy.types import Panel
+from . import config
+
+# collect all the classes to register
+arrClasses = []
+
+
+def prefix_name(opClass):
+    opClass.__name__ = config.ADDON_PREFIX.upper() + '_PT_' + opClass.__name__
+    arrClasses.append(opClass)
+    return opClass
 
 #
 # Add additional functions here
 #
 
+
+@prefix_name
 class MyPanel(Panel):
-    bl_label = 'My Awesome Panel'
+    bl_label = config.ADDON_NAME
     bl_space_type = 'PROPERTIES'
-    bl_region_type= 'WINDOW'
+    bl_region_type = 'WINDOW'
     bl_context = 'render'
 
     def draw(self, context):
         row = self.layout.row()
         row.prop(context.scene, 'my_property')
+        row.op()
 
+
+#### || CLASS MAINTENANCE ||####
 def register():
-    bpy.utils.register_class(MyPanel)
+    for i in arrClasses:
+        bpy.utils.register_class(i)
+
 
 def unregister():
-    bpy.utils.unregister_class(MyPanel)
+    for i in reversed(arrClasses):
+        bpy.utils.unregister_class(i)
