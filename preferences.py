@@ -5,7 +5,7 @@ arrClasses = []
 
 
 def prefix_name(opClass):
-    opClass.__name__ = config.ADDON_PREFIX.upper() + opClass.__name__
+    opClass.__name__ = config.ADDON_PREFIX.upper() + '_' + opClass.__name__
     arrClasses.append(opClass)
     return opClass
 
