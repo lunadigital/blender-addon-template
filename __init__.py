@@ -14,37 +14,42 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
+from . import ui
+from . import operators
+from . import preferences
+from . import properties
+from . import install
+
+
 bl_info = {
-        "name": "My Awesome Add-on",
-        "description": "Single line describing my awesome add-on.",
-        "author": "Aaron Powell",
-        "version": (1, 0),
-        "blender": (2, 80, 0),
-        "location": "Properties > Render > My Awesome Panel",
-        "warning": "", # used for warning icon and text in add-ons panel
-        "wiki_url": "http://my.wiki.url",
-        "tracker_url": "http://my.bugtracker.url",
-        "support": "COMMUNITY",
-        "category": "Render"
-        }
+    "name": "My Awesome Add-on",
+    "description": "Single line describing my awesome add-on.",
+    "author": "Aaron Powell, Anthony Aragues",
+    "version": (0, 0, 1),
+    "blender": (3, 4, 0),
+    "location": "Properties > Render > My Awesome Panel",
+    "warning": "",  # used for warning icon and text in add-ons panel
+    "wiki_url": "http://my.wiki.url",
+    "tracker_url": "http://my.bugtracker.url",
+    "support": "COMMUNITY",
+    "category": "Render"
+}
 
-import bpy
-
-#
-# Add additional functions here
-#
 
 def register():
-    from . import properties
-    from . import ui
     properties.register()
+    operators.register()
+    preferences.register()
     ui.register()
+    install.addPackages()
+
 
 def unregister():
-    from . import properties
-    from . import ui
     properties.unregister()
+    operators.unregister()
+    preferences.unregister()
     ui.unregister()
+
 
 if __name__ == '__main__':
     register()
